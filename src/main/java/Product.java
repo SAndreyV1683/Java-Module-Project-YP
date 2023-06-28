@@ -1,8 +1,8 @@
 public class Product {
     String name;
-    double price;
+    float price;
 
-    public Product(String name, double price) {
+    public Product(String name, float price) {
         this.name = name;
         this.price = price;
     }

@@ -18,12 +18,10 @@ public class Main {
                     isNumber = true;
                 }
             } else {
-                System.out.println("Введите число");
+                System.out.println("Это некорректное значение для подсчёта. Введите число");
                 scanner = new Scanner(System.in);
             }
         }
-
-        System.out.println("peopleCount " +  peopleCount);
 
         Calculator calculator = new Calculator();
         calculator.showRequest();
@@ -31,14 +29,17 @@ public class Main {
             System.out.println("Введите название товара.");
             String name = scanner.next();
             System.out.println("Введите стоимость товара.");
-            double price = scanner.nextDouble();
+            float price = scanner.nextFloat();
             Product product = new Product(name, price);
             calculator.addProduct(product);
             System.out.println("Введите любой символ что бы продолжить или введите \"Завершить\" что бы ЗАВЕРШИТЬ");
             complete = scanner.next();
         } while (!complete.equalsIgnoreCase("Завершить"));
 
-        System.out.println("Товары:\n" + calculator.result + " \nСумма: "+ calculator.sum);
+        float endPrice = calculator.sum / peopleCount;
+        Formatter formatter = new Formatter(endPrice);
+
+        System.out.println("Добавленные товары:\n" + calculator.result + " \nСумма: "+ formatter.getFormattedString());
 
     }
 }
