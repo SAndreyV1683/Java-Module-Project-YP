@@ -12,7 +12,6 @@ public class Main {
         float endPrice = calculator.sum / peopleCount;
         Formatter formatter = new Formatter(endPrice);
 
-        System.out.println("Добавленные товары:\n" + calculator.result + " \nСумма: "+ formatter.getFormattedString());
-
+        System.out.println("Добавленные товары:\n" + calculator.result + "Сумма, которую должен заплатить каждый поровну: "+ formatter.getFormattedString());
     }
 }

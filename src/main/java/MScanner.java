@@ -39,12 +39,16 @@ public class MScanner {
             do {
                 if (scanner.hasNextFloat()){
                     price = scanner.nextFloat();
-                    isFloat = true;
+                    if (price < 0) {
+                        System.out.println("Стоимость не может быть отрицительной. Введите стоимость заново.");
+                        scanner = new Scanner(System.in);
+                    } else {
+                        isFloat = true;
+                    }
                 } else {
                     System.out.println("Не верный формат ввода. Введите в формате рубли,копейки, например 10,45");
                     scanner = new Scanner(System.in);
                 }
-
             } while (!isFloat);
 
             Product product = new Product(name, price);
