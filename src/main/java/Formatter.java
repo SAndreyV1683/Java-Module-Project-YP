@@ -6,7 +6,7 @@ public class Formatter {
         this.sum = sum;
     }
 
-    String getFormattedString() {
+    public String getFormattedString() {
         int i = (int) sum;
 
         String messageTemplate = "%.2f %s";

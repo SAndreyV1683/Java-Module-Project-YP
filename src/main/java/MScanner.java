@@ -49,7 +49,7 @@ public class MScanner {
         do {
             if (scanner.hasNextFloat()){
                 price = scanner.nextFloat();
-                if (price < 1) {
+                if(price <= 0) {
                     System.out.println("Стоимость не может быть отрицательной или нулевой. Введите стоимость заново.");
                     scanner = new Scanner(System.in);
                 } else {
