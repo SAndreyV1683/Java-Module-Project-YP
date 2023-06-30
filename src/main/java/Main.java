@@ -9,9 +9,9 @@ public class Main {
         calculator.showRequest();
         mScanner.setPrice();
 
-        float endPrice = calculator.sum / peopleCount;
+        float endPrice = calculator.getSum() / peopleCount;
         Formatter formatter = new Formatter(endPrice);
 
-        System.out.println("Добавленные товары:\n" + calculator.result + "Сумма, которую должен заплатить каждый поровну: "+ formatter.getFormattedString());
+        System.out.println("Добавленные товары:\n" + calculator.getResult() + "Сумма, которую должен заплатить каждый поровну: "+ formatter.getFormattedString());
     }
 }

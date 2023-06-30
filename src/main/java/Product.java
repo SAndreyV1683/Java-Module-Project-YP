@@ -1,6 +1,15 @@
 public class Product {
-    String name;
-    float price;
+    private final String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    private final float price;
 
     public Product(String name, float price) {
         this.name = name;

@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
 public class MScanner {
-    boolean isNumber = false;
-    int peopleCount;
-    Scanner scanner;
-    Calculator calculator;
-    String complete;
+    private int peopleCount;
+    private Scanner scanner;
+    private final Calculator calculator;
+
     public MScanner(Calculator calculator) {
         scanner = new Scanner(System.in);
         this.calculator = calculator;
     }
 
-    void setPeopleCount() {
+    public void setPeopleCount() {
         System.out.println("На скольких человек необходимо разделить счёт? \nВведите значение:");
+        boolean isNumber = false;
         while (!isNumber) {
             if (scanner.hasNextInt()) {
                 peopleCount = scanner.nextInt();
@@ -29,28 +29,13 @@ public class MScanner {
         }
     }
 
-    void setPrice() {
+    public void setPrice() {
+        String complete;
         do {
             System.out.println("Введите название товара.");
             String name = scanner.next();
             System.out.println("Введите стоимость товара.");
-            float price = 0;
-            boolean isFloat = false;
-            do {
-                if (scanner.hasNextFloat()){
-                    price = scanner.nextFloat();
-                    if (price < 0) {
-                        System.out.println("Стоимость не может быть отрицительной. Введите стоимость заново.");
-                        scanner = new Scanner(System.in);
-                    } else {
-                        isFloat = true;
-                    }
-                } else {
-                    System.out.println("Не верный формат ввода. Введите в формате рубли,копейки, например 10,45");
-                    scanner = new Scanner(System.in);
-                }
-            } while (!isFloat);
-
+            float price = getPrice();
             Product product = new Product(name, price);
             calculator.addProduct(product);
             System.out.println("Введите любой символ что бы продолжить или введите \"Завершить\" что бы ЗАВЕРШИТЬ");
@@ -58,7 +43,28 @@ public class MScanner {
         } while (!complete.equalsIgnoreCase("Завершить"));
     }
 
-    int getPeopleCount() {
+    private float getPrice() {
+        float price = 0;
+        boolean isFloat = false;
+        do {
+            if (scanner.hasNextFloat()){
+                price = scanner.nextFloat();
+                if (price < 1) {
+                    System.out.println("Стоимость не может быть отрицательной или нулевой. Введите стоимость заново.");
+                    scanner = new Scanner(System.in);
+                } else {
+                    isFloat = true;
+                }
+            } else {
+                System.out.println("Не верный формат ввода. Введите в формате рубли,копейки, например 10,45");
+                scanner = new Scanner(System.in);
+            }
+        } while (!isFloat);
+
+        return price;
+    }
+
+    public int getPeopleCount() {
         return peopleCount;
     }
 }
